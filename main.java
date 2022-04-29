@@ -6,5 +6,6 @@ public class main {
         Stack stack = new Stack();
         System.out.println(a[11]);
       // System.out.println(Warmup.consistentBinSearch(a,132, stack));
+        System.out.println("im checking");
     }
 }
