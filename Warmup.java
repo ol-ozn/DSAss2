@@ -22,9 +22,9 @@ public class Warmup {
 
     public static int consistentBinSearch(int[] arr, int x, Stack myStack) {
         int left =0, right = arr.length-1;
-        myStack.push(left);
-        myStack.push(right);
         while (left < right ){
+            myStack.push(left);
+            myStack.push(right);
             int middle = (left + right) /2;
             if (arr[middle] == x)
                 return middle;
