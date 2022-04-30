@@ -21,20 +21,20 @@ public class Warmup {
     }
 
     public static int consistentBinSearch(int[] arr, int x, Stack myStack) {
-        int left =0, right = arr.length-1;
-        myStack.push(left);
-        myStack.push(right);
-        while (left < right ){
+        int left =0, right = arr.length-1; //initial binary search
+        while (left <= right ){
+            myStack.push(left); //invariant left in under right in the stack
+            myStack.push(right);
             int middle = (left + right) /2;
-            if (arr[middle] == x)
+            if (arr[middle] == x) // binary search implementation
                 return middle;
             if (arr[middle] < x)
                 left = middle +1;
             else
                 right = middle -1;
             int inconsistencies = Consistency.isConsistent(arr);
-            for (int j=0; j< inconsistencies; j++){
-                right = (int) myStack.pop();
+            for (int j=0; j< inconsistencies; j++){ //pop out the stack left and right to backtrack
+                right = (int) myStack.pop(); // use the invariant
                 left = (int) myStack.pop();
             }
         }
@@ -42,7 +42,7 @@ public class Warmup {
     	// Your implementation should contain this line:
     	//int inconsistencies = Consistency.isConsistent(arr);
     	
-    	return -1; // temporal return command to prevent compilation error
+    	return -1; // x not found
     }
     
 }
